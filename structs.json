@@ -1,0 +1,27 @@
+{
+    "structs": {
+        "RootObject": {
+            "fields": [
+                { "name": "某个地址", "offset": "0xF8", "type": "pointer", "struct": "SubObject" }
+            ]
+        },
+        "SubObject": {
+            "fields": [
+                { "name": "数组指针",       "offset": "0x70", "type": "pointer_array", "struct": "ArrayElement", "count_offset": "0x80", "count_divide": 8 },
+                { "name": "数组字节长度",   "offset": "0x80", "type": "qword" }
+            ]
+        },
+        "ArrayElement": {
+            "fields": [
+                { "name": "文本字符串",     "offset": "0x98", "type": "string", "size": 128, "encoding": "auto", "pointer": true },
+                { "name": "子节点",         "offset": "0x40", "type": "pointer", "struct": "TreeNode" }
+            ]
+        },
+        "TreeNode": {
+            "fields": [
+                { "name": "数组指针",       "offset": "0x40", "type": "pointer_array", "struct": "ArrayElement", "count_offset": "0x50", "count_divide": 8 },
+                { "name": "数组字节长度",   "offset": "0x50", "type": "qword" }
+            ]
+        }
+    }
+}
